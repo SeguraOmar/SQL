@@ -1,0 +1,65 @@
+Développer Exécuter la requête à nouveau Éditer Expliquer Profilage Base de données : videogames Daté du : 10:26:7
+SELECT * FROM `games`
+SELECT COUNT(*) AS nbr_doublon FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
+SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
+SELECT g_name FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
+SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
+SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
+SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
+SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
+SELECT g_name FROM `games` GROUP BY g_name HAVING COUNT(*) = 1;
+SELECT g_name, g_mode, g_published_at, g_pegi FROM games ORDER BY g_name, g_mode, g_published_at, g_pegi ASC;
+SELECT g_name, g_mode, g_published_at, g_pegi FROM games ORDER BY g_published_at ASC LIMIT 10;
+SELECT g_name, g_mode, g_published_at, g_pegi FROM games ORDER BY g_published_at DESC LIMIT 10;
+SELECT g_name, g_mode FROM games ORDER BY g_mode LIMIT 1;
+SELECT g_name, g_mode FROM games ORDER BY g_mode;
+SELECT g_name, g_mode FROM games GROUP BY g_mode HAVING COUNT(g_mode) = 1;
+SELECT g_name, g_mode FROM games GROUP BY g_mode HAVING COUNT(g_mode) > 1;
+SELECT MIN(g_name) AS g_name, g_mode FROM games GROUP BY g_mode HAVING COUNT(DISTINCT g_mode) = 1;
+SELECT g_name, g_mode FROM games GROUP BY g_mode HAVING COUNT(g_mode) = 1;
+select g_name AS Titre, g_mode AS Mode FROM games GROUP BY g_name, g_mode HAVING COUNT(g_mode) = 1;
+select g_name AS Titre, MAX(g_mode) AS Mode FROM games GROUP BY g_name, g_mode HAVING COUNT(DISTINCT g_mode) = 1;
+SELECT g_name AS Titre, MAX(g_mode) AS Mode FROM games GROUP BY g_name HAVING COUNT(DISTINCT g_mode) = 1;
+SELECT g_name AS Titre, MAX(g_mode) AS Mode FROM games GROUP BY g_name HAVING COUNT(DISTINCT g_mode) = 1 AND MAX(g_mode) IN ('Solo', 'Multijoueur');
+SELECT g_name, g_published_at FROM games WHERE YEAR (g_published_at) BETWEEN 2015 AND 2020 ORDER BY YEAR (g_published_at);
+SELECT g_name AS Titre, MAX(g_mode) AS Mode FROM games GROUP BY g_name HAVING COUNT(DISTINCT g_mode) = 1 AND MAX(g_mode) IN ('Solo');
+SELECT * FROM games WHERE g_name LIKE '%The Witcher%';
+SELECT * FROM games WHERE g_name NOT LIKE '%Halo%';
+SELECT g_name, g_published_at FROM games WHERE YEAR (g_published_at) IN (2012, 2016, 2020);
+SELECT g_name, s_name FROM games NATURAL JOIN studios;
+SELECT g.g_name, s.s_name, s.s_nationality FROM games g JOIN studios s ON g.s_id = s.s_id;
+SELECT * FROM `games_platforms`
+SELECT * FROM `platforms`
+SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id;
+SELECT * FROM `games`
+SELECT * FROM `games_platforms`
+SELECT * FROM `genres`
+SELECT * FROM `platforms`
+SELECT * FROM `studios`
+SELECT * FROM `games`
+SELECT * FROM `games`
+SELECT * FROM `games_platforms`
+SELECT * FROM `platforms`
+SELECT * FROM `platforms`
+SELECT g.g_name, g.g_mode FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%WII%' ORDER BY g.g_pegi ASC;
+SELECT g.g_name, g.g_mode FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id;
+SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%';
+SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%' OR p.p_name LIKE '%XBOX%' OR p.p_name LIKE '%Gamecube%';
+SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id;
+SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%' OR p.p_name LIKE '%XBOX%' OR p.p_name LIKE '%Gamecube%' OR p.p_name LIKE '%Nintendo%';
+SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%' OR p.p_name LIKE '%XBOX%' OR p.p_name LIKE '%Gamecube%' OR p.p_name LIKE '%Nintendo%';
+SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%' OR p.p_name LIKE '%XBOX%' OR p.p_name LIKE '%Gamecube%' OR p.p_name LIKE '%Nintendo%';
+SELECT g.g_name, g.g_mode, p.p_name, g.g_pegi FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%' OR p.p_name LIKE '%XBOX%' OR p.p_name LIKE '%Gamecube%' OR p.p_name LIKE '%Nintendo%' ORDER BY g.g_pegi ASC;
+SELECT g.g_name, g.g_mode, p.p_name, g.g_pegi FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%' OR p.p_name LIKE '%XBOX%' OR p.p_name LIKE '%Gamecube%' OR p.p_name LIKE '%Nintendo%' ORDER BY g.g_pegi ASC;
+SELECT g.g_name, g.g_mode, p.p_name, g.g_pegi FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id GROUP BY g.g_name, p.p_name ORDER BY g_name ASC;
+SELECT g.g_name, g.g_mode, p.p_name, g.g_pegi FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id GROUP BY g.g_name, p.p_name ORDER BY g_name ASC;
+SELECT g.g_name, g.g_mode, p.p_name, g.g_pegi FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id GROUP BY g.g_name, p.p_name ORDER BY g_name ASC;
+SELECT COUNT(g_name) FROM games;
+SELECT COUNT(g_name) AS NombreTotalDeJeux FROM games;
+SELECT COUNT(g_name) AS NombreTotalDeJeux FROM games;
+SELECT COUNT(DISTINCT g_name) AS NombreTotalDeJeuxUniques FROM games;
+SELECT s.s_name AS NomDuStudio, COUNT(g.g_name) AS NombreDeJeux FROM games g JOIN studios s ON g.s_id = s.s_id GROUP BY s.s_name;
+SELECT s.s_name AS NomDuStudio, COUNT(g.g_name) AS NombreDeJeux, p.p_name AS Plateforme FROM games g JOIN studios s ON g.s_id = s.s_id JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id GROUP BY s.s_name, p.p_name;
+SELECT g.g_name AS NomDuJeu, COUNT(DISTINCT gp.p_id) AS NombreDePlateformes FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id GROUP BY g.g_id, g.g_name HAVING COUNT(DISTINCT gp.p_id) >= 4;
+SELECT g.g_name AS NomDuJeu, COUNT(DISTINCT gp.p_id) AS NombreDePlateformes FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id GROUP BY g.g_id, g.g_name HAVING COUNT(DISTINCT gp.p_id) >= 4;
+
