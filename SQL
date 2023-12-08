@@ -2,14 +2,8 @@ Développer Exécuter la requête à nouveau Éditer Expliquer Profilage Base de
 SELECT * FROM `games`
 SELECT COUNT(*) AS nbr_doublon FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
 SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
-SELECT g_name FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
-SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
-SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
-SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
-SELECT COUNT(g_name) FROM `games` GROUP BY g_name HAVING COUNT(*) > 1;
 SELECT g_name FROM `games` GROUP BY g_name HAVING COUNT(*) = 1;
 SELECT g_name, g_mode, g_published_at, g_pegi FROM games ORDER BY g_name, g_mode, g_published_at, g_pegi ASC;
-SELECT g_name, g_mode, g_published_at, g_pegi FROM games ORDER BY g_published_at ASC LIMIT 10;
 SELECT g_name, g_mode, g_published_at, g_pegi FROM games ORDER BY g_published_at DESC LIMIT 10;
 SELECT g_name, g_mode FROM games ORDER BY g_mode LIMIT 1;
 SELECT g_name, g_mode FROM games ORDER BY g_mode;
@@ -28,19 +22,7 @@ SELECT * FROM games WHERE g_name NOT LIKE '%Halo%';
 SELECT g_name, g_published_at FROM games WHERE YEAR (g_published_at) IN (2012, 2016, 2020);
 SELECT g_name, s_name FROM games NATURAL JOIN studios;
 SELECT g.g_name, s.s_name, s.s_nationality FROM games g JOIN studios s ON g.s_id = s.s_id;
-SELECT * FROM `games_platforms`
-SELECT * FROM `platforms`
 SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id;
-SELECT * FROM `games`
-SELECT * FROM `games_platforms`
-SELECT * FROM `genres`
-SELECT * FROM `platforms`
-SELECT * FROM `studios`
-SELECT * FROM `games`
-SELECT * FROM `games`
-SELECT * FROM `games_platforms`
-SELECT * FROM `platforms`
-SELECT * FROM `platforms`
 SELECT g.g_name, g.g_mode FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%WII%' ORDER BY g.g_pegi ASC;
 SELECT g.g_name, g.g_mode FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id;
 SELECT g.g_name, g.g_mode, p.p_name FROM games g JOIN games_platforms gp ON g.g_id = gp.g_id JOIN platforms p ON gp.p_id = p.p_id WHERE p.p_name LIKE '%Playstation%';
